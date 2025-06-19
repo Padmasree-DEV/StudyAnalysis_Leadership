@@ -10,6 +10,7 @@ format:
     code-summary: "Show R Code"
     number-sections: true
     df-print: paged
+    self-contained: true 
 editor: visual
 execute:
   warning: false
