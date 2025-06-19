@@ -63,11 +63,11 @@ Open leadership_analysis.qmd inside RStudio or your preferred R environment.
 install.packages(c("tidyverse", "fmsb", "echarts4r", "ggchicklet", "scales", "reshape2", "data.tree"))
 ```
 ## 4. Knit the Report
-Click the Render button or run:
+Click the Render button in R-studio or execute the command:
 ```bash
 rmarkdown::render("leadership_analysis.qmd")
 ```
 
 ## 👩‍💻 Author
 Padmasree Jayaraman
-Designed and developed the analysis framework and interactive plots.
+Designed and developed the analysis framework.
