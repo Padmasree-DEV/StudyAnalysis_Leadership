@@ -11,7 +11,6 @@ format:
     number-sections: true
     df-print: paged
     self-contained: true 
-editor: visual
 execute:
   warning: false
   message: false
@@ -865,7 +864,6 @@ ggplot(longData, aes(x = Dimension, y = Score, fill = Feedback_Type)) +
 #| message: false
 #| warning: false
 
-
 df <- read.csv("Data_plot.csv") %>% 
   mutate(Self_O = Self,
          Self = case_when(Self == "D1" ~ "D1 (n=2)",
@@ -874,7 +872,7 @@ df <- read.csv("Data_plot.csv") %>%
                           Self == "D4" ~ "D4 (n=2)",
                           Self == "Supervisor" ~ "Supervisor (n=4)")) %>% 
   filter(Self_O != "Supervisor") 
-
+  
 # Define question mapping for each leadership style
 style_questions <- list(
   S1_Directing   = c("Q1", "Q11", "Q15", "Q16", "Q17" ),
@@ -914,9 +912,8 @@ style_scores$Match <- style_scores$Estimated_Style == style_scores$Expected_Styl
 final_result <- style_scores %>%
   select(Responder, Self_D_Level, Estimated_Style, Expected_Style, Match)
 
-
 #################################################################
-
+library(reshape2)
 # # Compute average style scores per person
 style_scores <- df %>%
   rowwise() %>%
@@ -984,6 +981,7 @@ ggplot(heatmap_long, aes(x = Avg_Score, y = Self, color = Style, fill = Style)) 
     breaks = c(1, 2, 3, 4, 5, 6),
     labels = c("1", "2", "3", "4", "5", "Top Style")
   )
+
 ```
 
 ### Alignment plot
@@ -1002,11 +1000,11 @@ bar_data <- final_result %>%
   mutate(Perp = ifelse(Estimated_Style== "S1_Directing" & Self_D_Level == "D2 (n=7)", 
                        "28%", Perp))
 
-
+library(ggchicklet)
 # Plot
 ggplot(bar_data, aes(x = Self_D_Level, y = prop, fill = Estimated_Style)) +
   # geom_bar(stat = "identity", position = "fill", width = 0.5) +
-  geom_chicklet( position = "fill", width = 0.65)+
+  geom_chicklet(stat = "identity", position = "fill", width = 0.65)+
   geom_text(
     aes(label = Perp),
     position = position_fill(vjust = 0.5),
@@ -1022,4 +1020,5 @@ ggplot(bar_data, aes(x = Self_D_Level, y = prop, fill = Estimated_Style)) +
   theme_bw(base_size = 16) +
   theme(legend.position = "bottom")+
   scale_fill_brewer(palette = "Set2", name = "")
+
 ```
