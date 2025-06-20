@@ -2,8 +2,8 @@
 
 This repository provides an interactive data analysis and visualization framework for exploring leadership development across nine key dimensions. The project uses anonymized survey data and is built using R- RStudio and R Markdown.
 
-📥 **Download the Full Analysis Report**  
-[Click here to view or download AnalysisReport.html](AnalysisReport.html)
+### 📥 **Download the Full Analysis Report**  
+[Click here to view or download AnalysisReport.html](https://github.com/Padmasree-DEV/StudyAnalysis_Leadership/releases/download/Results/AnalysisReport.html)
 
 ## 📊 Overview
 
